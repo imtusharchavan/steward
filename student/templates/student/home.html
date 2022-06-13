@@ -24,7 +24,7 @@
         {% for classroom in classrooms %}
     <div class="subject">
         <span>@{{ classroom.faculty }}</span>
-        <a href="/student/classrooms/{{ classroom.pk }}/">{{ classroom.name }}</a>
+        <a href="/student/{{ classroom.pk }}/">{{ classroom.name }}</a>
     </div>
     {% endfor %}
     </div>
