@@ -16,17 +16,11 @@
             width: 100%;
         }
     </style>
-
 </head>
 <body>
-    <h1>Home Page</h1>
-    <div>
-        {% for classroom in classrooms %}
-    <div class="subject">
-        <span>@{{ classroom.faculty }}</span>
-        <a href="/student/classrooms/{{ classroom.pk }}/">{{ classroom.name }}</a>
-    </div>
-    {% endfor %}
-    </div>
+    <a href="/student">Go to home</a>
+    <hr>
+    <h1>{{ classroom.name }}</h1>
+    <p>{{ classroom.faculty }}</p>
 </body>
 </html>

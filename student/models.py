@@ -62,12 +62,25 @@ class Semester(models.Model):
         return self.name
 
 
-class Subject(models.Model):
+class Classroom(models.Model):
+    faculty = models.ForeignKey("Faculty", null=True, on_delete=models.SET_NULL)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=50)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, default=1)
-    faculty = models.ForeignKey("Faculty", null=True, blank=True, on_delete=models.SET_NULL)
+    # people = 
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+
+class Announcement(models.Model):
+    faculty = models.ForeignKey("Faculty", on_delete=models.CASCADE)
+    classroom = models.ForeignKey("Classroom", on_delete=models.CASCADE)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.body[:50]
