@@ -5,5 +5,5 @@ from student.views import landing
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", landing),
-    path('student/', include('students.urls', namespace='student')),
+    path('student/', include('student.urls', namespace='student')),
 ]
