@@ -6,7 +6,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class User(AbstractUser):
-    fullname = models.CharField("full name", max_length=150)
     is_faculty = models.BooleanField("faculty status", default=False)
     is_student = models.BooleanField("student status", default=False)
 
@@ -35,14 +34,14 @@ class Student(models.Model):
     admission_year = models.IntegerField("admission year", validators=[MinValueValidator(1984), max_value_current_year])
 
     def __str__(self):
-        return self.user.fullname
+        return f"{self.user.first_name} {self.user.last_name}"
 
 
 class Faculty(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.fullname
+        return f"{self.user.first_name} {self.user.last_name}"
 
 
 class Course(models.Model):
