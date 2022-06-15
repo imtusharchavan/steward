@@ -1,11 +1,18 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
     is_faculty = models.BooleanField("faculty status", default=False)
     is_student = models.BooleanField("student status", default=False)
-    
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username    
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -70,17 +77,23 @@ class Classroom(models.Model):
     code = models.CharField("Class code", max_length=50, unique=True)
     name = models.CharField("Class name", max_length=50)
     subject = models.ForeignKey("Subject", on_delete=models.DO_NOTHING)
-    teacher = models.ForeignKey("Faculty", null=True, blank=True, on_delete=models.SET_NULL)
+    teacher = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, default=1)
     # people = 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = [
+            '-updated_at',
+            '-created_at',
+        ]
 
     def __str__(self):
         return self.name
 
 
-class Stream(models.Model):
+class Post(models.Model):
     user = models.ForeignKey("User", on_delete=models.DO_NOTHING)
     classroom = models.ForeignKey("Classroom", on_delete=models.CASCADE)
     body = models.TextField()
@@ -89,3 +102,11 @@ class Stream(models.Model):
 
     def __str__(self):
         return self.body[:50]
+
+
+def post_user_created_signal(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+post_save.connect(post_user_created_signal, sender=User)
