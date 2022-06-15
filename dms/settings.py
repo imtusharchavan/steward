@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #  local apps
-    'student',
+    'users',
+    'classrooms',
 ]
 
 MIDDLEWARE = [
@@ -117,4 +118,6 @@ STATIC_ROOT = "static_root"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'student.User'
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = "/users"
+LOGIN_URL = "/login"
