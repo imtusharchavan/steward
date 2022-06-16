@@ -1,7 +1,7 @@
-{% extends "users/base_faculty.html" %}
+{% extends "faculty/base_faculty.html" %}
 
 {% block content %}
 
-<h1>Faculty</h1>
+<a href="{% url 'classrooms:classroom-list' %}">Classrooms</a>
 
 {% endblock content %}

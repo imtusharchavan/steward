@@ -74,11 +74,11 @@ class Subject(models.Model):
 
 
 class Classroom(models.Model):
+    teacher = models.ForeignKey("UserProfile", null=True, blank=True, on_delete=models.SET_NULL)
     code = models.CharField("Class code", max_length=50, unique=True)
     name = models.CharField("Class name", max_length=50)
-    subject = models.ForeignKey("Subject", on_delete=models.DO_NOTHING)
-    teacher = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE, default=1)
+    subject = models.ForeignKey("Subject", null=True, blank=True, on_delete=models.SET_NULL)
+    semester = models.ForeignKey(Semester, null=True, blank=True, on_delete=models.SET_NULL)
     # people = 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -94,7 +94,7 @@ class Classroom(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey("User", on_delete=models.DO_NOTHING)
+    user = models.ForeignKey("User", on_delete=models.CASCADE)
     classroom = models.ForeignKey("Classroom", on_delete=models.CASCADE)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
