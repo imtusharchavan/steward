@@ -25,6 +25,7 @@ class Student(models.Model):
     ]
     gender = models.CharField("Gender", max_length=1, choices=GENDERS_CHOICES)
     date_of_birth = models.DateField("Date of birth")
+    phone_number = models.CharField(max_length=20)
     course = models.ForeignKey("Course", on_delete=models.DO_NOTHING)
     YEAR_CHOICES = [
         ('1', 'First'),

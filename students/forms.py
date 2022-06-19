@@ -15,6 +15,7 @@ class StudentModelForm(forms.ModelForm):
             'enrollment_no',
             'gender',
             'date_of_birth',
+            'phone_number',
             'course',
             'current_year',
         )
