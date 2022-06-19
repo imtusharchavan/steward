@@ -20,10 +20,10 @@ class Student(models.Model):
     department = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING)
     enrollment_no = models.CharField("Enrollment No", max_length=20, unique=True)
     GENDERS_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
     ]
-    gender = models.CharField("Gender", max_length=1, choices=GENDERS_CHOICES)
+    gender = models.CharField("Gender", max_length=6, choices=GENDERS_CHOICES)
     date_of_birth = models.DateField("Date of birth")
     phone_number = models.CharField(max_length=20)
     course = models.ForeignKey("Course", on_delete=models.DO_NOTHING)
