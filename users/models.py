@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+    is_admin = models.BooleanField("admin status", default=False)
     is_faculty = models.BooleanField("faculty status", default=False)
     is_student = models.BooleanField("student status", default=False)
 
@@ -16,6 +17,7 @@ class UserProfile(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING)
     enrollment_no = models.CharField("Enrollment No", max_length=20, unique=True)
     GENDERS_CHOICES = [
         ('M', 'Male'),
@@ -74,12 +76,11 @@ class Subject(models.Model):
 
 
 class Classroom(models.Model):
-    teacher = models.ForeignKey("UserProfile", null=True, blank=True, on_delete=models.SET_NULL)
+    teacher = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
     code = models.CharField("Class code", max_length=50, unique=True)
     name = models.CharField("Class name", max_length=50)
     subject = models.ForeignKey("Subject", null=True, blank=True, on_delete=models.SET_NULL)
-    semester = models.ForeignKey(Semester, null=True, blank=True, on_delete=models.SET_NULL)
-    # people = 
+    # students = 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

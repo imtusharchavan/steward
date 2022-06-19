@@ -26,8 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party apps
+    'crispy_forms',
+    "crispy_tailwind",
+
     #  local apps
     'users',
+    'students',
     'classrooms',
 ]
 
@@ -119,5 +124,11 @@ STATIC_ROOT = "static_root"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 LOGIN_REDIRECT_URL = "/classrooms"
 LOGIN_URL = "/login"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = 'tailwind'
