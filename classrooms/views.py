@@ -9,15 +9,20 @@ from classrooms.forms import ClassroomModelForm
 
 class ClassroomListView(FacultyAndLoginRequiredMixin, generic.ListView):
     template_name = "classrooms/classroom_list.html"
-    context_object_name = "classrooms"
+    context_object_name = {
+        "classrooms",
+        "peoples"
+    }
+    
 
     def get_queryset(self):
+        peoples = Classroom.people.all()
         user = self.request.user
         # initial queryset of classrooms for particular teacher
         if user.is_faculty:
-            queryset = Classroom.objects.filter(teacher=user.userprofile)
+            queryset = Classroom.objects.filter(department=user.userprofile)
         else:
-            queryset = Classroom.objects.filter(teacher=user.student.classrooms.people)
+            queryset = Classroom.objects.filter(people=user.student.classrooms.people)
             # filter for the student that  is logged in
             queryset = queryset.filter(student__user=user)
         return queryset

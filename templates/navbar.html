@@ -14,7 +14,7 @@
           <a href="#" class="mr-5 hover:text-gray-900">About</a>
         </div>
         {% if  request.user.is_authenticated %}
-            {% if request.user.is_admin %}
+            {% if request.user.is_staff %}
             <a href="{% url 'students:student-list' %}" class="m-3 mr-5 hover:text-gray-900">Students</a>
             {% endif %}
             {% if request.user.is_faculty or request.user.is_student %}

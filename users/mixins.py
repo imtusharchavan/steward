@@ -7,7 +7,7 @@ class AdminAndLoginRequiredMixin(AccessMixin):
     """Verify that the current user is authenticated and is an admin"""
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or not request.user.is_admin:
+        if not request.user.is_authenticated or not request.user.is_staff:
             return redirect("students:student-list")
         return super().dispatch(request, *args, **kwargs)
 

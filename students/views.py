@@ -12,7 +12,7 @@ from .forms import StudentModelForm, CustomUserCreationForm
 class SignupView(AdminAndLoginRequiredMixin, generic.CreateView):
     template_name = "registration/signup.html"
     form_class = CustomUserCreationForm
-    
+
     def get_success_url(self) :
         return reverse("students:student-create")
 
