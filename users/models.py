@@ -41,6 +41,7 @@ class Student(models.Model):
 
 class Faculty(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
