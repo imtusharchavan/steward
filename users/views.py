@@ -15,7 +15,7 @@ class LandingPageView(generic.TemplateView):
 class FacultyHomeView(FacultyAndLoginRequiredMixin, generic.TemplateView):
     template_name = "users/faculty.html"
 
-
+    
 # class ClassroomListView(LoginRequiredMixin, generic.ListView):
 #     template_name = "users/classroom_list.html"
 #     context_object_name = "classrooms"

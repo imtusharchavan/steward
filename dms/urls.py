@@ -7,7 +7,7 @@ from users.views import LandingPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", LandingPageView.as_view(), name='landing-page'),
+    path('', LandingPageView.as_view(), name='landing-page'),
     path('users/', include('users.urls', namespace='users')),
     path('students/', include('students.urls', namespace='students')),
     path('classrooms/', include('classrooms.urls', namespace='classrooms')),
