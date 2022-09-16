@@ -35,9 +35,12 @@ INSTALLED_APPS = [
     "crispy_tailwind",
 
     #  local apps
-    'users',
-    'students',
-    'classrooms',
+    'accounts',
+    'student',
+    'faculty',
+    'course',
+    'classroom',
+    'announcement',
 ]
 
 MIDDLEWARE = [
@@ -126,17 +129,19 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = "static_root"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = "media_root"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 LOGIN_URL = "/login"
-LOGIN_REDIRECT_URL = "/classrooms"
 LOGOUT_REDIRECT_URL = "/"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"

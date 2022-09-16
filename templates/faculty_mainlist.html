@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="text-2xl font-medium title-font mb-4 text-gray-900">FACULTY</h1>
+        </div>
+        {% for faculty in faculty %}
+            <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+                <a href="#">
+                    <img class="rounded-t-lg" src="{{ faculty.profile_picture }}" alt="">
+                </a>
+                <div class="p-5 h-full flex flex-col items-center">
+                    <h2 class="title-font font-medium text-lg text-gray-900">{{ faculty.title }} {{ faculty.user.first_name }} {{ faculty.user.last_name }}</h2>
+                    <h3 class="text-gray-500 mb-3 item text-center">{{ faculty.designation }}</h3>
+                    <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        View Profile
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}

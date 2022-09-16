@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest">FACULTY</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ faculty.user.first_name }} {{ faculty.user.last_name }}</h1>
+                <div class="flex mb-4">
+                    <a href="{% url 'faculty:faculty-detail' faculty.pk %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
+                        Details
+                    </a>
+                    <a href="{% url 'faculty:faculty-update' faculty.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                        Edit
+                    </a>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Name</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.title }} {{ faculty.user.first_name }} {{ faculty.user.last_name }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Phone Number</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.phone_number }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Designation</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.designation }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Educational Qualification</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.educational_qualification }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Honors and Awards</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.honors_awards }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Research Interests</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.research_interests }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Publications</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.publications }}</span>
+                </div>
+                <div class="flex border-b border-gray-300 py-2">
+                    <span class="text-gray-500">Other Responsibliites</span>
+                    <span class="ml-auto text-gray-900">{{ faculty.other_responsibliites }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+{% endblock content %}
