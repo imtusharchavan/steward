@@ -1,4 +1,4 @@
-# steward
+# STEWARD
 
 Academic Department Supervision
 
