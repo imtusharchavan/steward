@@ -10,10 +10,12 @@ Academic Department Supervision
 
 3. Create `.env` file inside both the websites and provide the credentials to the database. This will connect the project to a database.
 
-4. Run `python manage.py makemigrations`
+4. Now you can run:
 
-5. Run `python manage.py migrate`
+`python manage.py makemigrations`
 
-6. Run `python manage.py runserver`
+`python manage.py migrate`
+
+`python manage.py runserver`
 
 It runs the app in development mode. Open [http://127.0.0.1:8000](http://127.0.0.1:8000) to view it in the browser.
